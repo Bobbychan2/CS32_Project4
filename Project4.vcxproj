@@ -123,21 +123,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bst.cpp" />
-    <ClCompile Include="engine.cpp" />
-    <ClCompile Include="hashtable.cpp" />
-    <ClCompile Include="item.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="provided.cpp" />
-    <ClCompile Include="sorts.cpp" />
+    <ClCompile Include="src\bst.cpp" />
+    <ClCompile Include="src\engine.cpp" />
+    <ClCompile Include="src\hashtable.cpp" />
+    <ClCompile Include="src\item.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\provided.cpp" />
+    <ClCompile Include="src\sorts.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bst.h" />
-    <ClInclude Include="engine.h" />
-    <ClInclude Include="hashtable.h" />
-    <ClInclude Include="item.h" />
-    <ClInclude Include="provided.h" />
-    <ClInclude Include="sorts.h" />
+    <ClInclude Include="src\bst.h" />
+    <ClInclude Include="src\engine.h" />
+    <ClInclude Include="src\hashtable.h" />
+    <ClInclude Include="src\item.h" />
+    <ClInclude Include="src\provided.h" />
+    <ClInclude Include="src\sorts.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

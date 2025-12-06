@@ -1,0 +1,17 @@
+> load data/sample_small.csv
+LOADED 3 (skipped 0) in 0 ms
+> list
+Category: Book | Name: The AI Era | Price : 12.5
+Category: Clothing | Name: Hoodie | Price : 29.99
+Category: Electronics | Name: Bluetooth Speaker | Price : 59.99
+> sort merge asc
+Category: Book | Name: The AI Era | Price : 12.5
+Category: Clothing | Name: Hoodie | Price : 29.99
+Category: Electronics | Name: Bluetooth Speaker | Price : 59.99
+> find Hoodie
+Category: Clothing | Name: Hoodie | Price : 29.99
+> erase Hoodie
+OK
+> find Hoodie
+NOT FOUND
+> quit

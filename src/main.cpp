@@ -141,7 +141,7 @@ int main() {
         T.ok(v3[0].name()=="C" && v3[3].name()=="A", "insertion desc order");
     }
 
-    // -------- Engine & CSV --------
+    // Engine & CSV
     T.section("Engine load/find/erase/list");
     {
         Engine e(8);

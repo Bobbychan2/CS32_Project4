@@ -13,7 +13,7 @@ bool parseCategory(const std::string& s, Category& out) {
 }
 
 static bool parseLine(const std::string& line, ItemHandle& out) {
-    // Expect: name,category,price
+    // name,category,price expected 
     std::stringstream ss(line);
     std::string name, catStr, priceStr;
     if (!std::getline(ss, name, ',')) return false;
@@ -51,4 +51,4 @@ bool readCSV(const std::string& path, std::vector<ItemHandle>& out, size_t& skip
     return true;
 }
 
-} // namespace provided
+} 

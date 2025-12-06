@@ -1,0 +1,41 @@
+Big-O Summary
+
+Hash Table (separate chaining)
+Insert:
+Best: O(1)
+Average: O(1)
+Worst: O(n)
+Find:
+Best: O(1)
+Average: O(1)
+Worst: O(n)
+Erase:
+Best: O(1)
+Average: O(1)
+Worst: O(n)
+
+Binary Search Tree (BST)
+Insert: Best/Average O(log n), Worst O(n)
+Find: Best/Average O(log n), Worst O(n)
+Erase: Best/Average O(log n), Worst O(n)
+
+Insertion Sort
+Stable: Yes.
+Best: O(n)
+Average: O(n^2)
+Worst: O(n^2)
+
+Merge Sort
+Stable: Yes
+Best/Average/Worst: O(n log n)
+Extra space: O(n)
+
+Two-Child Deletion Strategy (BST)
+
+For deleting a node with two children, I used the in-order successor method we talked about in class. I  first located the successor by finding the minimum node in the right subtree, remove it using detachMin(), and replace the deleted node with that successor. Then I reattach its children appropriately. This preserves BST ordering and keeps the structure valid.
+
+Guardrail / Design Choice
+
+I enforced a strict duplicate policy as follows: duplicates are defined as having the same (name, category) pair. The BST ignores duplicate inserts, and Engine::add returns false when a duplicate is detected. The hash table is keyed by name, so the Engine checks both structures before inserting to keep them consistent. This guardrail prevents mismatched states between the hash table and BST and ensures the collection always maintains unique items.
+
+All of the provided pass/fail cases in the original main.cpp passed. In addition to the automated tests provided in the starter main.cpp, I created several extra test cases to further validate the correctness of my implementation. For the HashTable, I added tests that check behavior with very small bucket counts, updating existing keys, verifying size consistency after updates, and erasing both existing and non-existent keys. For the BST, I added tests specifically to confirm that duplicate items with the same (name, category) pair are ignored, that size does not increase on duplicate inserts, and that the tree remains a valid BST after these operations. For sorting, I included extra verification of merge sort in descending order to ensure that stability and comparison inversion were both implemented correctly. For the Engine class, I added tests that check duplicate rejection, correct interaction between the hash table and BST, in-order listing, and sorted snapshots in descending order. These additional cases helped ensure that all edge behaviors matched the project specification and that the structures remained consistent under all supported operations. I passed a total of 62 test cases and removed the extra ones before submission.

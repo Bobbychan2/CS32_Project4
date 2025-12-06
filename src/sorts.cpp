@@ -1,7 +1,7 @@
 #include "sorts.h"
 #include <algorithm>
 
-// helper comparator
+// helper for comparator
 static bool itemLess(const ItemHandle& lhs,
     const ItemHandle& rhs,
     bool ascending) {
@@ -9,17 +9,18 @@ static bool itemLess(const ItemHandle& lhs,
         return lhs < rhs;
     }
     else {
-        return rhs < lhs;  // invert for descending
+        return rhs < lhs;  // invert to descending
     }
 }
 
-// Stable insertion sort (this part is fine)
+// Stable insertion sort
 void insertionSortItems(std::vector<ItemHandle>& a, bool ascending) {
     const std::size_t n = a.size();
     for (std::size_t i = 1; i < n; ++i) {
         ItemHandle key = a[i];
         std::size_t j = i;
 
+        // move strictly-greater elements; ties stay in original order (stable)
         while (j > 0 && itemLess(key, a[j - 1], ascending)) {
             a[j] = a[j - 1];
             --j;
@@ -28,34 +29,35 @@ void insertionSortItems(std::vector<ItemHandle>& a, bool ascending) {
     }
 }
 
-// ---- MERGE SORT FIXED TO AVOID DEFAULT CONSTRUCTION ----
+//Stable merge sort (no default ctor needed)
 
-// merge two sorted ranges [left, mid) and [mid, right)
+// merge [left, mid) and [mid, right) into sorted [left, right)
 static void mergeRanges(std::vector<ItemHandle>& a,
     std::size_t left,
     std::size_t mid,
     std::size_t right,
     bool ascending,
-    std::vector<ItemHandle>& temp) {
+    std::vector<ItemHandle>& temp)
+{
     std::size_t i = left;
     std::size_t j = mid;
 
-    temp.clear();                 // reuse buffer
-    temp.reserve(right - left);   // ensure enough capacity, no default-ctor
+    temp.clear();
+    temp.reserve(right - left);   // reserve capacity only; no ItemHandle() calls
 
-    // build temp via push_back (uses copy/move, not default ctor)
+    // build temp via push_back (copy/move only)
     while (i < mid && j < right) {
         if (itemLess(a[j], a[i], ascending)) {
             temp.push_back(a[j++]);
         }
         else {
-            temp.push_back(a[i++]);
+            temp.push_back(a[i++]);  // stable: left side wins on ties
         }
     }
     while (i < mid)  temp.push_back(a[i++]);
     while (j < right) temp.push_back(a[j++]);
 
-    // copy back to a
+    // copy back
     for (std::size_t k = 0; k < temp.size(); ++k) {
         a[left + k] = temp[k];
     }
@@ -65,7 +67,8 @@ static void mergeSortRec(std::vector<ItemHandle>& a,
     std::size_t left,
     std::size_t right,
     bool ascending,
-    std::vector<ItemHandle>& temp) {
+    std::vector<ItemHandle>& temp)
+{
     if (right - left <= 1) return;
 
     std::size_t mid = left + (right - left) / 2;
@@ -78,8 +81,7 @@ void mergeSortItems(std::vector<ItemHandle>& a, bool ascending) {
     if (a.size() <= 1) return;
 
     std::vector<ItemHandle> temp;
-    temp.reserve(a.size());   // no elements constructed, just reserves space
-
+    temp.reserve(a.size());   // still no default ctor used
     mergeSortRec(a, 0, a.size(), ascending, temp);
 }
 
@@ -89,27 +91,3 @@ void sortItems(std::vector<ItemHandle>& a, SortAlgo algo, bool ascending) {
     case SortAlgo::Merge:     mergeSortItems(a, ascending); break;
     }
 }
-
-
-
-/*
-#include "sorts.h"
-#include <algorithm>
-
-// TODO: Implement stable insertion sort on vector<ItemHandle>
-void insertionSortItems(std::vector<ItemHandle>& a, bool ascending) {
-    (void)a; (void)ascending; // STUB: no-op
-}
-
-// TODO: Implement stable merge sort on vector<ItemHandle>
-void mergeSortItems(std::vector<ItemHandle>& a, bool ascending) {
-    (void)a; (void)ascending; // STUB: no-op
-}
-
-void sortItems(std::vector<ItemHandle>& a, SortAlgo algo, bool ascending) {
-    switch (algo) {
-        case SortAlgo::Insertion: insertionSortItems(a, ascending); break;
-        case SortAlgo::Merge:     mergeSortItems(a,     ascending); break;
-    }
-}
-*/

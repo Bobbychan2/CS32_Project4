@@ -15,45 +15,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bst.cpp">
+    <ClCompile Include="src\bst.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="engine.cpp">
+    <ClCompile Include="src\engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="hashtable.cpp">
+    <ClCompile Include="src\hashtable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="item.cpp">
+    <ClCompile Include="src\item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="provided.cpp">
+    <ClCompile Include="src\provided.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sorts.cpp">
+    <ClCompile Include="src\sorts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bst.h">
+    <ClInclude Include="src\bst.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="engine.h">
+    <ClInclude Include="src\engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="hashtable.h">
+    <ClInclude Include="src\hashtable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="item.h">
+    <ClInclude Include="src\item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="provided.h">
+    <ClInclude Include="src\provided.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sorts.h">
+    <ClInclude Include="src\sorts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
